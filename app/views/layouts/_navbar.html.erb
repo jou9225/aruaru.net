@@ -1,0 +1,21 @@
+<header class="mb-4">
+  <nav class="navbar navbar-expand-sm navbar-light bg-cream">
+    <a class="navbar-brand" href="/">あるある.net</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to 'ユーザ登録', new_user_registration_path, class: 'nav-link' %></li>
+          <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+        <% end %>
+      </ul>
+    </div>
+
+  </nav>
+</header>
