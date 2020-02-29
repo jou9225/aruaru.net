@@ -1,7 +1,11 @@
 
-<h1 class="mb-5">ユーザ詳細</h1>
+<h1 class="mb-4">ユーザ詳細</h1>
 
-<h2 class="mb-5">　<%= @user.name %>さんのページ</h2>
+<h2 class="mb-4 ml-5"><%= @user.name %>さんのページ</h2>
+
+<% if current_user == @user %>
+  <%= link_to 'ユーザ編集', edit_user_registration_path(current_user), class: 'btn btn-lg btn-secondary ml-5 mb-3' %>
+<% end %>
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="#" class="nav-link">投稿したあるある</a></li>
       <li class="nav-item"><a href="#" class="nav-link">お気に入りしたあるある</a></li>
