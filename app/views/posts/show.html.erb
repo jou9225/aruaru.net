@@ -1,0 +1,17 @@
+<div class="container">
+    
+    <h1>あるある詳細</h1>
+    
+    <div class="card">
+        <div class="card-header bg-cream">
+            <%= @post.title %>あるある
+        </div>
+        <div class="card-body">
+            <%= @post.content %>
+        </div>
+        <div class="card-footer　bg-white">
+            カテゴリ：<%= @post.category.category %>　　投稿者：<%= @post.user.name %>
+        </div>
+    </div>
+
+</div>
