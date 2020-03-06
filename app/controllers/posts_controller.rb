@@ -28,6 +28,15 @@ class PostsController < ApplicationController
   end
 
   def search
+    if search_params[:text] && search_params[:category_id].present?
+      @posts = Post.where(category_id: search_params[:category_id]).where(['title LIKE ? OR content LIKE ?', "%#{search_params[:text]}%", "%#{search_params[:text]}%"])
+    elsif search_params[:category_id].present?
+      @posts = Post.where(category_id: search_params[:category_id])
+    elsif search_params[:text].present?
+      @posts = Post.where(['title LIKE ? OR content LIKE ?', "%#{search_params[:text]}%", "%#{search_params[:text]}%"])
+    else
+      @posts = Post.all
+    end
   end
   
   private
@@ -35,5 +44,10 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :content,[:category_id])
   end
+  
+  def search_params
+    params.fetch(:search,{}).permit(:text,[:category_id])
+  end
+  
   
 end

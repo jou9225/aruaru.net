@@ -20,7 +20,7 @@
 
   <div class="form-group">
     <%= f.label :category,'カテゴリー' %><br>
-    <%= f.collection_select :category_id, Category.all, :id, :category, :include_blank => 'カテゴリを選択', class: "form-control" %>
+    <%= f.collection_select :category_id, Category.all, :id, :type, :include_blank => 'カテゴリを選択', class: "form-control" %>
   </div>
      
 
