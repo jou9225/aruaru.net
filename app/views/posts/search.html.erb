@@ -7,6 +7,10 @@
     <%= f.collection_select :category_id, Category.all, :id, :type, :include_blank => 'カテゴリを選択', disabled: true, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :sort,'並び替え' %><br>
+    <%= select_tag :sort, options_for_select({'新着順': 'id desc', '古い順': 'id asc'}, "new") %>
+  </div>
+  <div class="form-group">
     <%= f.label :text, 'テキスト検索' %>
     <%= f.text_field :text %>
     
