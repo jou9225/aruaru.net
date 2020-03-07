@@ -30,15 +30,14 @@ class PostsController < ApplicationController
   def search
     
     if search_params[:text] && search_params[:category_id].present?
-     @posts = Post.where(category_id: search_params[:category_id]).where(['title LIKE ? OR content LIKE ?', "%#{search_params[:text]}%", "%#{search_params[:text]}%"]).order(params[:sort])
+     @posts = Post.where(category_id: search_params[:category_id]).where(['title LIKE ? OR content LIKE ?', "%#{search_params[:text]}%", "%#{search_params[:text]}%"]).order(params[:sort]).page(params[:page]).per(25)
     elsif search_params[:category_id].present?
-     @posts = Post.where(category_id: search_params[:category_id]).order(params[:sort])
+     @posts = Post.where(category_id: search_params[:category_id]).order(params[:sort]).page(params[:page]).per(25)
     elsif search_params[:text].present?
-     @posts = Post.where(['title LIKE ? OR content LIKE ?', "%#{search_params[:text]}%", "%#{search_params[:text]}%"]).order(params[:sort])
+     @posts = Post.where(['title LIKE ? OR content LIKE ?', "%#{search_params[:text]}%", "%#{search_params[:text]}%"]).order(params[:sort]).page(params[:page]).per(25)
     else
-     @posts = Post.all.order(params[:sort])
+     @posts = Post.all.order(params[:sort]).page(params[:page]).per(25)
     end
-  
   end
   
   
@@ -51,6 +50,5 @@ class PostsController < ApplicationController
   def search_params
     params.fetch(:search,{}).permit(:text,:sort,[:category_id])
   end
-    
-    
+  
 end

@@ -11,5 +11,20 @@ class User < ApplicationRecord
                     
                     
   has_many :posts
+  has_many :favorites
+  has_many :liked, through: :favorites, source: :post
+  
+  def like(post)
+    self.favorites.find_or_create_by(post_id: post.id)
+  end
+  
+  def unlike(post)
+    like = self.favorites.find_by(post_id: post.id)
+    like.destroy if like
+  end
+  
+  def like?(post)
+    self.liked.include?(post)
+  end
   
 end

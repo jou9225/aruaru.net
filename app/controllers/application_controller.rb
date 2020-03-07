@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
       before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def counts(user)
+    @count_posts = user.posts.count
+    @count_favorites = user.favorites.count
+    @count_favorites_post = post.favorites.count
+  end
+
   protected
 
     def configure_permitted_parameters
