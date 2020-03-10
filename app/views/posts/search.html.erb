@@ -8,7 +8,7 @@
   </div>
   <div class="form-group">
     <%= f.label :sort,'並び替え' %><br>
-    <%= select_tag :sort, options_for_select({'新着順': 'id desc', '古い順': 'id asc'}, "new") %>
+    <%= select_tag :sort, options_for_select({'新着順': 'new', '古い順': 'old', 'お気に入りが多い順': 'popular', 'お気に入りが少ない順': 'unpopular'}, "new") %>
   </div>
   <div class="form-group">
     <%= f.label :text, 'テキスト検索' %>
@@ -20,3 +20,4 @@
 <% end %>
 
 <%= render 'posts/posts', posts: @posts %>
+

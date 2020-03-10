@@ -4,8 +4,12 @@ class ApplicationController < ActionController::Base
   def counts(user)
     @count_posts = user.posts.count
     @count_favorites = user.favorites.count
+  end
+  
+  def counts(favorites)
     @count_favorites_post = post.favorites.count
   end
+
 
   protected
 
