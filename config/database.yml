@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: aruaru_production
   username: aruaru
   password: <%= ENV['ARUARU_DATABASE_PASSWORD'] %>
