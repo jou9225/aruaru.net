@@ -11,7 +11,7 @@
     　カテゴリー：<%= link_to post.category.type, '/posts/search?utf8=✓&search%5Bcategory_id%5D=' +  post.category.id.to_s + '&sort=new&search%5Btext%5D=&commit=検索'%>
     　投稿者：<%= link_to post.user.name, user_path(post.user)%>
     <div class="mt-1" style="float: right; display: inline-block">
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="「<%= post.title %>あるある」　<%= post.content %>" data-url="https://9e822418fde248a88a819d46852f92f1.vfs.cloud9.us-east-1.amazonaws.com/posts/<%= post.id %>" data-hashtags="あるあるnet" data-lang="ja" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="「<%= post.title %>あるある」　<%= post.content %>" data-url="https://jepapt2-aruaru.herokuapp.com/posts/<%= post.id %>" data-hashtags="あるあるnet" data-lang="ja" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
   </div>
 </div>
