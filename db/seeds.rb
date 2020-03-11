@@ -1,4 +1,5 @@
 Category.create(type: '生活')
+Category.create(type: 'モノ')
 Category.create(type: '仕事')
 Category.create(type: '趣味')
 Category.create(type: '人間')
