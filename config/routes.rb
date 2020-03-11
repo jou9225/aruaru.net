@@ -17,5 +17,9 @@ root to: 'toppages#index'
   end
   
 resources :favorites, only: [:create, :destroy]
-  
+
+get 'gachas' => 'gachas#index'
+get 'gachas/ikkai/' => 'gachas#ikkai'
+get 'gachas/jukkai/' => 'gachas#jukkai'
+
 end

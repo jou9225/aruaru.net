@@ -11,4 +11,4 @@
       <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入りしたあるある<span class="badge badge-secondary"><%= @count_favorites %></span></a></li>
     </ul>
  
-<%= render 'posts/posts', posts: @posts %>
+<%= render 'posts/posts', posts: @likes %>

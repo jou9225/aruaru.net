@@ -6,9 +6,6 @@ class ApplicationController < ActionController::Base
     @count_favorites = user.favorites.count
   end
   
-  def counts(favorites)
-    @count_favorites_post = post.favorites.count
-  end
 
 
   protected
