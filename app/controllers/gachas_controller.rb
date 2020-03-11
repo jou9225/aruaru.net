@@ -3,10 +3,12 @@ class GachasController < ApplicationController
   end
 
   def ikkai
-    @post = Post.offset( rand(Post.count) ).first
+    @post = Post.rand.first
   end
 
   def jukkai
-    @posts = Post.offset( rand(Post.count) ).first(10)
+    @posts = Post.rand.first(10)
   end
+
+
 end

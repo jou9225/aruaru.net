@@ -22,7 +22,13 @@ class Post < ApplicationRecord
   
   scope :top_popular, -> { select('posts.*', 'count(favorites.id) AS favcount').left_joins(:favorites).group('posts.id').order('favcount desc').limit(10) }
   
-  
+  scope :rand, -> do
+   if Rails.env.production? 
+     return order('RANDOM()')
+   else
+     return order('rand()')
+   end
+  end
    
  
   
