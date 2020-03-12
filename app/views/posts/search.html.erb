@@ -22,3 +22,6 @@
 
 <%= render 'posts/posts', posts: @posts %>
 
+<% if @posts.empty? %>
+  <div class="alert alert-secondary">該当する投稿がありませんでした</div>
+<% end %>
