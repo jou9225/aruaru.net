@@ -7,7 +7,9 @@
    <p> <%= post.content %></p>
   </div>
   <div class="card-footer bg-white small">
-    <%= render 'favorites/like_button', post: post %>
+    <div id="like_button-<%= post.id %>">
+      <%= render 'favorites/like_button', post: post %>
+    </div>
     　カテゴリー：<%= link_to post.category.type, '/posts/search?utf8=✓&search%5Bcategory_id%5D=' +  post.category.id.to_s + '&sort=id+desc&search%5Btext%5D=&commit=検索'%>
     　投稿者：<%= link_to post.user.name, user_path(post.user)%>
     <div class="mt-1" style="float: right; display: inline-block">

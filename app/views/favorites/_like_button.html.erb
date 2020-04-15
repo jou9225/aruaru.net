@@ -1,19 +1,17 @@
 <% if user_signed_in? %>
-  <% if current_user.like?(post) %>
-    <div style="display: inline">
-      <%= form_with(model: current_user.favorites.find_by(post_id: post.id), local: true, method: :delete, class:'d-inline') do |f| %>
+  <div style="display: inline">
+    <% if current_user.like?(post) %>
+      <%= form_with(model: current_user.favorites.find_by(post_id: post.id), method: :delete, class:'d-inline') do |f| %>
         <%= hidden_field_tag :post_id, post.id %>
-        <%= f.submit '★', class: 'btn btn-warning active btn-sm mr-1' %><%= post.favorites.count %>
-    </div>
+        <%= f.submit 'お気に入り', class: 'btn btn-warning active btn-sm mr-1' %><%= post.favorites.count %>
       <% end %>
     <% else %>
-    <div style="display: inline">
-      <%= form_with(model: current_user.favorites.build, local: true, class:'d-inline') do |f| %>
+      <%= form_with(model: current_user.favorites.build, class:'d-inline') do |f| %>
         <%= hidden_field_tag :post_id, post.id %>
-        <%= f.submit '★', class: 'btn btn-secondary btn-sm mr-1' %><%= post.favorites.count %>
-    </div>
+        <%= f.submit 'お気に入り', class: 'btn btn-secondary btn-sm mr-1' %><%= post.favorites.count %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 <% else %>
-  <%= link_to '★', user_session_path, class:'btn btn-secondary btn-sm mr-1' %><%= post.favorites.count %>
+  <%= link_to 'お気に入り', user_session_path, class:'btn btn-secondary btn-sm mr-1' %><%= post.favorites.count %>
 <% end %>

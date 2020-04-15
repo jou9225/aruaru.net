@@ -1,19 +1,22 @@
 <h1>あるある検索</h1>
 
 <%= form_with model: @post, :url => {:action => :search}, scope: :search, method: :get, local: true do |f| %>
+<% category_id = params[:search][:category_id] if params[:search].present? %>
+<% sort = params[:search][:sort] if params[:sort].present? %>
+<% text = params[:search][:text] if params[:search].present? %>
 <div class="form-inline mb-4">
   <div class="form-group mr-3">
     <%= f.label :category,'カテゴリー' %><br>
-    <%= f.collection_select :category_id, Category.all, :id, :type, :include_blank => 'カテゴリを選択', disabled: true, class: "form-control" %>
+    <%= f.collection_select :category_id, Category.all, :id, :type, { include_blank: 'カテゴリを選択', disabled: true, selected: category_id }, { class: "form-control" } %>
   </div>
   <div class="form-group">
     <%= f.label :sort,'並び替え' %><br>
-    <%= select_tag :sort, options_for_select({'新着順': 'new', '古い順': 'old', 'お気に入りが多い順': 'popular', 'お気に入りが少ない順': 'unpopular'}, "new") %>
+    <%= select_tag :sort, options_for_select({'新着順': 'new', '古い順': 'old', 'お気に入りが多い順': 'popular', 'お気に入りが少ない順': 'unpopular'}),{class: "form-control" } %>
   </div>
 </div>
   <div class="form-group">
     <%= f.label :text, 'テキスト検索' %>
-    <%= f.text_field :text %>
+    <%= f.text_field :text, value: text, class: "form-control" %>
     
   </div>
 <%= f.submit '検索', class:'btn btn-secondary' %> 
